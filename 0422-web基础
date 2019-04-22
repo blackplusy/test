@@ -19,7 +19,7 @@ c>子查询、分组查询
 d>补充
 =======================================
 1.web基础
-a.软件基础
+a.软件基础5741227
 	常用的软件
 	QQ           c/s
 	wechat       c/s  b/s
@@ -60,6 +60,60 @@ a3>c/s架构软件
 		x86    i386  i686  32位操作系统
 		x86_64   x64 	   64位操作系统
 	注意：反安装：卸载、软件捆绑
+2.访问网页的过程
+	a.浏览器中输入地址(http://www.sina.com.cn)
+	b.系统会在系统配置文件hosts中搜索是否有对应www.sina.com.cn的IP地址
+		hosts文件：ip地址和域名进行绑定文件，如果没有域名解析可以临时使用该文件进行解析
+			正常百度IP：36.42.146.39
+			在hosts文件中写入：192.168.6.20  www.baidu.com
+			在访问百度时候就直接访问192.168.6.20
+	c.如果hosts文件中没有定义www.sina.com.cn的IP地址，网络把数据发送到DNS服务器中
+		电信DNS:202.96.134.133
+		补充：查看dns  命令：win+r--cmd--ipconfig/all
+		补充：ipconfig  查看当前系统中所有网卡信息
+	d.dns服务器对域名进行解析，解析出对应IP
+		域名解析：域名解析为IP
+		win+r--cmd--nslookup www.baidu.com
+		解析出来的是百度对应的IP
+		win+r--cmd--ping www.baidu.com
+		对应的IP就是百度对应IP
+	e.通过网络把浏览器的请求发送给服务器
+	f.服务器进行相应的处理后返回给浏览器
+3.URL(统一资源定位器)
+	http://sports.sina.com.cn:80/slamdunk/live.shtml?id=2019042225
+	URL组成
+	a.协议：			http://
+	b.域名： 		sports.sina.com.cn
+	c.端口：         80
+	d.虚拟目录：		slamdunk
+	e.访问文件：		live.shtml
+	f.访问参数：		?id=2019042225
+	-----------------------------------
+	a.协议
+	一组规则规范
+	a1.http协议
+	http协议：超文本传输协议
+	超文本(富文本)：声音、图像、视频
+	普通文本：文本
+	http协议规定了数据在传输中先传什么，后传什么，怎么传
+	http协议特点：无状态(彼此不记录过去的行为)
+	a2.http协议请求
+		get		主要用于浏览，请求信息显示在请求头上(信封)，相对不安全，我要什么
+		https://s.taobao.com/search?q=lv&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20190422&ie=utf8
+		https://s.taobao.com/search?q=zara&imgfile=&js=1&stats_click=search_radio_all%3A1&initiative_id=staobaoz_20190422&ie=utf8
+		post	主要用于提交，请求信息显示在请求体中(信件内容)，相对安全，我给什么
+	a3.cookie&session
+		cookie   	验证机制，访问记录，定投广告，存放在客户端
+		session     验证机制，30分钟超时，存放在服务端
+	a4.状态码
+		服务端响应的代码
+		200      2开头，请求成功
+		302		 3开头，移动或者缓存，重定向
+		404		 4开头，客户端请求有问题
+		500		 5开头，服务端有问题
+
+
+
 
 
 
