@@ -114,6 +114,31 @@
 		win:		ping linux的IP
 		linux：		ping win的IP
 
+5.管理linux使用的工具
+	putty    命令行管理linux的工具(远程)
+	securecrt
+	ssh      
+	winscp   win和linux文件互传的工具
+
+6.目录操作
+	创建目录(mkdir)
+		mkdir a   		当前目录下创建空目录a
+		mkdir b /opt/c 	当前目录下创建空目录b,/opt目录下创建空目录c
+		mkdir "d  e"    当前目录下创建空目录d e(注意特殊符号)
+		mkdir -p f/g/h  当前目录下创建级联目录f/g/h
+		补充：tree       树状显示目录结构
+	复制目录(复制目录一定要加-r或者-a)(cp)
+		cp -r f a       复制当前目录下的f目录到当前目录下的a目录中(a目录存在)
+		cp -r f g       复制当前目录下的f目录到当前目录下并且重命名为g(g目录不存在)
+	剪切、移动目录(mv)
+		mv f b          剪切当前目录下f目录到b目录中(b目录存在)
+		mv b t          重命名当前目录下b目录为t(t目录不存在)
+	删除目录(rmdir / rm)
+		rmdir k  		删除当前目录下的空目录k
+		rm -r g         删除当前目录下的g目录
+		rm -rf t        强制删除t目录
+
+
 
 
 
