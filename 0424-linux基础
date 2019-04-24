@@ -1,0 +1,31 @@
+1.网络设置
+	a.临时设置IP
+	b.命令设置IP
+	c.修改配置文件设置IP
+		vim /etc/sysconfig/network-scripts/ifcfg-eth0
+		DEVICE=eth0                 设备名称
+		BOOTPROTO=static			启动协议(dhcp：动态分配IP，static:设置静态IP)
+		HWADDR=00:0c:29:9f:39:86    网卡的mac地址
+		ONBOOT=yes                  是否随开机启动而启动
+		TYPE=Ethernet               上网类型
+		IPADDR=10.10.101.3          IP地址
+		NETMASK=255.255.254.0       子网掩码
+		注意：修改完配置文件后一定更要重启网络
+		service network restart
+	d.设置主机名
+		查看主机名   
+			hostname
+		临时设置主机名(重启主机后失效)
+			hostname www.baidu.com   设置当前主机的主机名为www.baidu.com
+		永久设置主机名(重启主机后生效)
+			vim /etc/sysconfig/network
+			HOSTNAME=heygor.baba.com
+	e.绑定主机名
+		vim /etc/hosts
+			192.168.66.128   heygor.baba.com
+			
+
+
+
+
+
