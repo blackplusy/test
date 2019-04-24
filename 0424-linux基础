@@ -158,6 +158,33 @@
 			chown heygor install.log    修改文件拥有者为heygor
 			chown :bin install.log      修改文件拥有组为bin
 			chown root:root install.log 修改文件拥有者和拥有组为root
+6.管理命令
+	top 	监控系统资源
+	ps -ef  查看系统进程
+		ps -ef |grep mysqld  查看mysqld进程是否正常运行
+		ps -ef |grep sshd    查看sshd进程是否正常运行
+		ps -ef |grep httpd   查看apache进程是否正常运行
+		ps -ef |grep oracle  查看oracle进程是否正常运行
+	pid     进程id
+	kill 	-9     暴力杀  pid
+			-15    温柔杀  pid
+	free -m    查看内存情况
+	df -h      查看磁盘使用率
+	netstat -an 查看系统中开放的端口
+		netstat -an |grep 3306 查看mysql端口是否正常
+		netstat -an |grep 80   查看httpd端口是否正常
+	lsof -i:22  查看22号端口信息
+	启动模式
+		/etc/inittab
+		init 0  关机
+		init 3  进入到命令界面
+		init 5  进入到图形界面
+		init 6  重启系统 
+
+
+
+
+
 
 
 
