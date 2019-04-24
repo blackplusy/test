@@ -180,6 +180,63 @@
 		init 3  进入到命令界面
 		init 5  进入到图形界面
 		init 6  重启系统 
+7.linux下软件安装
+	a.软件安装基础
+		1>b/s架构的后端
+			操作系统
+			web服务器
+			数据库服务器
+		2>常见的web服务器
+			apache   不支持java
+			nginx    轻量级的web服务器(反向代理，负载均衡)
+			iis      asp aspx
+			tomcat   java
+		3>常见的数据库软件
+			mysql     甲骨文
+			oracle    甲骨文
+			sqlserver 微软
+			access    微软
+		4>常见搭配
+			操作系统       web服务器     数据库服务器
+			win               iis         sqlserver/access
+			                 apache       mysql
+			                 tomcat       mysql/oracle
+			linux            apache       mysql        （LAMP）
+			                 nginx        mysql         (LNMP)
+			                 tomcat       mysql/oracle
+	b.rhel中软件安装
+		安装软件都在光盘的Server目录中
+		安装软件都是以.rpm结尾的文件
+		安装vsftpd的过程
+		1.安装操作系统
+		2.设置IP、主机名、绑定主机名
+		3.关闭selinux，关闭防火墙
+		4.加载光驱
+			右键标签--cd/dvd--使用iso映像文件--选择光盘--确定
+		5.挂载光驱
+			注意：光盘对应系统的硬件/dev/scd0或者 /dev/cdrom
+			mount -o loop /dev/scd0  /mnt
+			注意：光盘类型必须加-o loop参数
+			/dev/scd0 系统对应光驱硬件
+			/mnt      挂载到哪个目录(通过访问哪个目录来访问光盘)
+		6.进入到光盘所在目录的Server目录下
+			cd /mnt/Server/
+		7.在目录中搜索vsftpd相关的软件
+			 ls | grep vsftpd
+		8.安装软件包
+			 rpm -ivh vsftpd-2.0.5-16.el5.i386.rpm
+		9.启动服务
+			service vsftpd start
+		10.测试
+			浏览器访问ftp://linux的ip地址
+		11.补充
+			如果需要共享文件可以把文件复制到/var/ftp/pub
+			
+
+
+
+
+
 
 
 
