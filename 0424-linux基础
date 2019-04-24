@@ -23,7 +23,51 @@
 	e.绑定主机名
 		vim /etc/hosts
 			192.168.66.128   heygor.baba.com
-			
+2.包、压缩文件、压缩包
+	a.包文件
+	创建的包文件通常以.tar结尾
+	tar -cvf test.tar install.log* Desktop/ 
+		创建包文件,打包文件为install.log开头的文件和Desktop目录
+	tar -tvf test.tar
+		查看包文件打包的文件属性信息
+	tar -xvf test.tar
+		解包包文件到当前目录下
+	tar -xvf test.tar -C /opt/
+		解包包文件到/opt目录下(指定目录需要加-C)
+	b.压缩文件
+	du -sh install.log
+		查看install.log文件大小
+    gzip install.log
+    	压缩文件install.log
+    gzip -l install.log.gz
+    	查看压缩文件的文件属性信息
+    gzip -d install.log.gz
+    	解压压缩文件install.log.gz
+    c.压缩包
+    先打包后压缩，创建的包文件都是以.tar.gz结尾或者以.tgz结尾
+    tar -cvf test1.tar install.log*
+    gzip test1.tar
+
+    tar -czvf test2.tgz install.log*
+    	创建压缩包文件，打包压缩内容为install.log开头的文件
+    tar -tzvf test2.tgz
+    	查看压缩包文件属性信息
+    tar -xzvf test2.tgz
+    	解压压缩包文件到当前目录下
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
