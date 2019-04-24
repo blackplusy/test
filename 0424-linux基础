@@ -55,6 +55,38 @@
     tar -xzvf test2.tgz
     	解压压缩包文件到当前目录下
 
+3.搜索和管道
+	a.搜索
+		find    速度较慢，都能搜到，搜文件
+			find /etc/ -name conf    
+				/etc目录下搜索文件名为conf的文件
+		    find /etc/ -name *.conf
+		    	/etc目录下搜索文件名以conf结尾的文件
+		locate   速度快，有缺陷，搜文件
+			locate passwd
+				系统中搜索文件名是passwd的文件
+		updatedb 刷新系统数据库
+		grep	 搜内容
+			grep root /etc/passwd
+				/etc/passwd中搜索含有root关键字的行
+			grep ^r /etc/passwd
+				/etc/passwd中搜索r开头的行内容
+			grep bash$ /etc/passwd
+				/etc/passwd中搜索bash结尾的行的内容
+	b.管道
+		| 	前面的输出作为后面的输入
+		ls /etc/ |grep ^b  
+			搜索/etc目录下以b开头的文件或者目录
+		head -7 install.log | tail -1 
+			查看文件的第七行数据
+4.查看帮助
+	man     查看官方手册
+		man ls  查看ls命令的官方手册
+	info    查看说明文档
+		info ls  查看ls命令的说明文档
+	--help  查看命令的常用参数
+		ls --help 查看ls命令常用参数
+		
 
 
 
