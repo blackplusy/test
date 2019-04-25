@@ -165,7 +165,7 @@ selinux
 			d.测试当前系统java版本(非必须)
 			java -version
 			e.设置环境变量
-			注意：环境变量可以在/etc/profile或者~/.bash_profile或者~/.bashrc中进行配置
+			注意：环境变量可以在/etc/profile、~/.bash_profile或者~/.bashrc中进行配置
 			环境变量：让系统可以找到我所运行的命令
 				用户变量(个人)   ~/.bash_profile或者~/.bashrc  当前用户生效
 				系统变量        /etc/profile                  系统中所有用户生效
@@ -178,6 +178,37 @@ selinux
 				添加java相关的库到环境变量中
 			f.使环境变量生效
 				source ~/.bash_profile
+		3>tomcat的部署
+			tomcat:java web常用web服务器
+			a.把tomcat压缩包通过工具传入linux中
+			b.解压tomcat压缩包到当前目录下
+				tar -xzvf apache-tomcat-7.0.77.tar.gz
+			c.tomcat的常见目录
+				bin:	存放tomcat命令位置
+				Lib： 	存放tomcat的库文件位置
+				logs：  存放tomcat的日志文件位置
+				temp：  存放临时文件的位置
+				conf:   存放配置文件的位置
+				webapps:存放tomcat项目的位置
+			d.启动服务
+				进入到tomcat的bin目录下
+				cd /root/apache-tomcat-7.0.77/bin/
+				执行./startup.sh
+			e.测试tomcat是否正常运行
+				查看进程
+					ps -ef |grep tomcat
+				查看端口
+					netstat -an |grep 8080
+				通过浏览器访问
+					linux的IP:8080
+					
+
+
+
+
+
+
+
 
 
 
