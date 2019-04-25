@@ -201,7 +201,50 @@ selinux
 					netstat -an |grep 8080
 				通过浏览器访问
 					linux的IP:8080
-					
+		4>tenorder项目部署
+			a.安装系统，配置ip、主机名、绑定
+			b.安装配置好jdk
+			c.安装配置好tomcat服务器
+			d.删除tomcat下的webapps目录下的所有文件
+				 rm -rf /root/apache-tomcat-7.0.77/webapps/*
+			e.把tenorder项目解压后传入tomcat的webapps中
+			f.导入数据库
+				0>目录切换到tomcat的webapps中的tenorder目录中(为了导入tenorder.sql文件)
+					cd /root/apache-tomcat-7.0.77/webapps/tenorder/
+				1>登录mysql
+					mysql -u root -p    管理员登录mysql数据库
+				2>创建数据库ten用于导入数据
+					create database ten;
+					显示query ok说明创建成功
+				3>数据库切换到ten中
+					use ten;
+					显示 Database changed说明切换成功
+				4>导入tenorder.sql文件
+					source tenorder.sql;
+				5>退出登录mysql
+					exit
+			g.修改数据库配置文件(根据安装文档提供设置进行修改)
+				vim /root/apache-tomcat-7.0.77/webapps/tenorder/WEB-INF/classes/database.properties
+				jdbc.user=root
+				jdbc.password=test
+				jdbc.driverClass=com.mysql.jdbc.Driver
+				jdbc.jdbcUrl=jdbc\:mysql\://localhost\:3306/ten?useUnicode\=true&amp;characterEncoding\=UTF-8&amp;autoReconnect\=true
+			h.重启tomcat服务
+				进入到tomcat的bin目录
+				cd /root/apache-tomcat-7.0.77/bin/
+				执行./shutdown.sh
+				./shutdown.sh
+				执行./startup.sh
+				./startup.sh
+			i.通过浏览器进行访问
+				http://linux的ip:8080/tenorder
+				前台地址：http://192.168.7.67:8080/tenorder
+				后台地址:http://192.168.7.67:8080/tenorder/admin
+
+
+
+
+
 
 
 
