@@ -165,7 +165,7 @@ selinux
 			d.测试当前系统java版本(非必须)
 			java -version
 			e.设置环境变量
-			注意：环境变量可以在/etc/profile、~/.bash_profile或者~/.bashrc中进行配置
+			注意：环境变量可以在/etc/profile或者~/.bash_profile或者~/.bashrc中进行配置
 			环境变量：让系统可以找到我所运行的命令
 				用户变量(个人)   ~/.bash_profile或者~/.bashrc  当前用户生效
 				系统变量        /etc/profile                  系统中所有用户生效
