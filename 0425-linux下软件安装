@@ -107,7 +107,7 @@ selinux
 			补充:查看可以自动安装软件的列表
 			yum list
 		6>安装mysql服务器
-			yum instal mysql* -y
+			yum install mysql* -y
 			自动安装mysql开头的软件和相关依赖包
 			启动mysql服务
 			service mysqld start
@@ -119,7 +119,7 @@ selinux
 			数据库服务器：   mysql
 		2>配置好自动安装(yum)
 		3>安装mysql相关软件
-			yum instal mysql* -y
+			yum install mysql* -y
 		4>安装apache相关软件
 			yum install http* -y
 		5>安装php相关软件
