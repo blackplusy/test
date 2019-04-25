@@ -107,7 +107,7 @@ selinux
 			补充:查看可以自动安装软件的列表
 			yum list
 		6>安装mysql服务器
-			yum install mysql* -y
+			yum instal mysql* -y
 			自动安装mysql开头的软件和相关依赖包
 			启动mysql服务
 			service mysqld start
@@ -119,7 +119,7 @@ selinux
 			数据库服务器：   mysql
 		2>配置好自动安装(yum)
 		3>安装mysql相关软件
-			yum install mysql* -y
+			yum instal mysql* -y
 		4>安装apache相关软件
 			yum install http* -y
 		5>安装php相关软件
@@ -144,7 +144,47 @@ selinux
 			http://linux的IP/ecshop按照提示进行安装
 			前台页面:linux的ip/ecshop
 			后台页面:linux的ip/ecshop/admin
-			
+	d.二进制文件的安装和部署
+		1>jdk的安装和配置
+			a.下载jdk
+			建议：官网下载(oracle.com)
+			jdk:java的开发环境
+			jre：java的运行环境
+			注意：操作系统、操作系统位数
+			补充：查看系统情况
+				uname -a
+				uname -r
+				32位：i386 i686
+				64位：x64   x86_64
+		2>jdk的部署
+			a.把jdk压缩包传入linux中
+			b.解压压缩包到当前目录下(确定好你的目录在哪里)
+			tar -xzvf jdk-7u7-linux-i586.tar.gz
+			c.重命名解压后的目录(非必须)
+			mv jdk1.7.0_07/ jdk
+			d.测试当前系统java版本(非必须)
+			java -version
+			e.设置环境变量
+			注意：环境变量可以在/etc/profile、~/.bash_profile或者~/.bashrc中进行配置
+			环境变量：让系统可以找到我所运行的命令
+				用户变量(个人)   ~/.bash_profile或者~/.bashrc  当前用户生效
+				系统变量        /etc/profile                  系统中所有用户生效
+			在家目录的.bash_profile中PATH下面，export PATH上面，添加内容：
+			export JAVA_HOME=/root/jdk
+				java的软件所在目录
+			export PATH=$JAVA_HOME/bin:$JAVA_HOME/jre/bin:$PATH
+				添加java的命令所在路径到环境变量中
+			export CLASSPATH=.:$CLASSPATH:$JAVA_HOME/lib:$JAVA_HOME/jre/lib
+				添加java相关的库到环境变量中
+			f.使环境变量生效
+				source ~/.bash_profile
+
+
+
+
+
+
+
 
 
 
