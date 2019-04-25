@@ -1,0 +1,163 @@
+每天晚上9点：
+	把/var/log目录中所有文件打包复制到/root中
+	tar -cvf /root/test.tar /var/log
+	tar -cvf test.tar /var/log    cp ./test.tar /root
+vi光标跳转到内容第十行行尾
+	10gg$
+修改权限的方式有哪些？
+	chmod  chown
+查看80端口是否正常运行
+	netstat -an | grep 80
+安装的apache如果无法访问怎么办？
+	1.检查网络
+	2.检查服务
+		ps -ef |grep httpd
+	3.检查端口
+		netstat -an | grep 80
+passwd中搜索b结尾
+	cat passwd | grep  b$
+	grep b$ passwd
+passwd文件中搜索回车？
+	grep ^$ passwd
+=================================================
+who
+whoami
+pwd
+cd
+ls
+mkdir
+rmdir
+cp
+mv
+tree
+touch
+echo
+vi/vim
+cat
+less
+more
+head
+tail
+ifconfig
+setup
+service
+ping
+tar
+gzip
+du -sh
+useradd
+usermod
+userdel
+id
+chmod
+chown
+top
+netstat
+free
+ps -ef
+df -h
+kill
+init 
+pidof  查看进程id
+man
+info
+find
+locate
+grep
+updatedb
+mount  挂载命令
+rpm 
+hostname
+passwd
+rm
+===============================================
+补充：
+防火墙
+	service iptables start 		开启
+	service iptables status     查看状态
+	service iptables stop       关闭
+selinux
+	vim /etc/selinux/config    配置文件查看selinux配置
+	SELINUX=disable
+	getenforce                查看当前selinux状态
+
+1.linux下软件的安装
+	a.安装方式
+		手动安装(rpm安装)  如果有依赖包可能需要考虑顺序等
+		自动安装(yum安装)  自动安装依赖包
+		源码安装           一般来说比较新，可以自定义安装
+	b.自动安装(yum)
+		1>加载光驱
+			右键标签--cd/dvd--使用iso映像文件--确定
+		2>创建目录用于挂载
+			mkdir /yum
+		3>挂载光驱到刚才所创建的目录下
+			mount -o loop /dev/scd0 /yum
+			补充：检查光驱是否挂载完毕(mount中找到/yum对应的type是iso9660的)
+			注意：type是iso9660的对应硬件都是光驱等
+		4>配置yum自动安装文件(本地yum)
+			自动安装配置文件所在路径/etc/yum.repos.d/里面的.repo文件
+			[rhel]                       分类标签
+			name=test                    名字
+			baseurl=file:///yum/Server   自动安装命令yum到哪里去找软件(软件库)
+			enabled=1                    是否开启自动安装，1是开启，0是关闭
+			gpgcheck=0 					 是否检查光盘包，0不检查，1检查
+		5>清理yum缓存
+			yum clean all
+			补充:查看可以自动安装软件的列表
+			yum list
+		6>安装mysql服务器
+			yum instal mysql* -y
+			自动安装mysql开头的软件和相关依赖包
+			启动mysql服务
+			service mysqld start
+	c.通过自动安装方式安装部署ecshop项目
+		1>ecshop项目环境
+			操作系统：       linux
+			开发语言：		php
+			web服务器：		apache
+			数据库服务器：   mysql
+		2>配置好自动安装(yum)
+		3>安装mysql相关软件
+			yum instal mysql* -y
+		4>安装apache相关软件
+			yum install http* -y
+		5>安装php相关软件
+			yum install php* -y
+		6>测试
+			service mysqld start
+			service httpd  start
+			注意:取消昨天svn的设置
+			/etc/httpd/conf/httpd.conf中注释掉昨天添加的代码(前面加#)
+			查看进程、查看端口
+			ps -ef |grep httpd
+			ps -ef |grep mysqld
+			netstat -an |grep 80
+			netstat -an |grep 3306
+		7>把ecshop项目解压后通过winscp传入linux中的/var/www/html中
+		8>修改/var/www/html/ecshop目录权限
+			chmod 777 -R /var/www/html/ecshop
+		9>修改数据库密码
+			mysqladmin -u root password 'test'
+			设置mysql管理员（root）的密码为test
+		10>通过浏览器访问
+			http://linux的IP/ecshop按照提示进行安装
+			前台页面:linux的ip/ecshop
+			后台页面:linux的ip/ecshop/admin
+			
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
