@@ -1,0 +1,86 @@
+1.数据库基础
+a.常见的数据库软件
+	关系型数据库
+		informix  IBM+HP  军、政、运、银  安装在小机
+		db2       IBM     军、政、运、银  
+		oracle    甲骨文   中大型企业    
+		mysql     甲骨文   互联网公司
+		sqlserver 微软     传统企业
+	非关系型数据库
+
+		mongodb   大数据、爬虫
+		redis     缓存、验证、消息队列
+		cassandra facebook
+b.开源
+	源代码开放(github、gitlab)
+	开源的好处：方便学习，促进软件发展
+	开源的坏处：不安全
+
+c.数据库基础
+	数据库：存放数据的仓库
+	数据库分为：数据库软件、数据库数据，常说的数据库是数据库的数据
+	数据库是由表组成
+	表是由数据组成
+
+d.mysql的登陆
+	d1.安装数据库
+		win:下载msi安装文件或者使用集成工具
+		linux：rpm安装，二进制文件安装，yum自动安装
+	d2.启动服务
+		linux:service mysqld start
+		win:对应图形界面操作
+	d3.mysql的登陆
+		mysql是一款c/s架构软件
+		mysql     mysql的客户端服务
+		mysqld    mysql的服务端服务
+		mysql的管理员：root
+		登陆命令
+		mysql     						登陆本地数据库
+		mysql -u root -p				管理员登陆本地数据库
+		mysql -h 127.0.0.1 -u root -p	管理员登陆IP为127.0.0.1的数据库
+e.mysql的基础命令
+		show databases;
+			查看当前软件中有哪些数据库
+		select database();
+			查看当前数据库的名字(null代表当前没有选择任何数据库)
+		use test;
+			数据库切换为test
+		show tables;
+			查看当前数据库中有哪些表
+		select * from ecs_goods;
+			查看ecs_goods表中所有数据
+f.表结构
+	1.数据类型
+		数字   int   			123 456
+		字符   char  varchar    'abc' '123'
+		日期   date             '1988-01-01'
+	注意：char和varchar的区别
+		char() 			定长    速度快，占用空间
+		varchar()       变长    速度慢，节省空间
+	2.表结构的创建
+		语法：
+		create table 表名(
+			列名(字段、表头)   数据类型,
+			列名              数据类型,
+			...
+		);
+		创建表goods,商品名称name 字符类型，最多10个字符，商品价格 price 数字类型，出厂日期 ddate 日期类型
+		create table goods(
+			name  char(10),
+			price int,
+			ddate date
+			);
+		补充：
+		查看表结构
+		desc 表名;
+		查看goods表的表结构
+		desc goods;
+		
+
+
+
+
+
+
+
+
