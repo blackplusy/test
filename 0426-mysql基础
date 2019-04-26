@@ -184,6 +184,65 @@ l.数据的删除
 	删除goods表中所有数据
 	truncate table goods;
 
+m.数据的查询
+	1>查询分类
+		简单查询
+		多表查询
+		子查询
+		分组查询
+	2>简单查询
+		ecshop表结构：
+			http://book.ecmoban.com/images/db.htm
+		可以查询所有数据
+			查询ecs_goods表中所有的数据
+			select * from ecs_goods;
+		可以查询指定行的数据
+			查询ecs_goods表中商品名称是KD876的所有信息
+			select * from ecs_goods where goods_name='KD876';
+		可以查询指定行的列的数据
+			查询ecs_goods表中商品名称是KD876的本店售价
+			select shop_price from ecs_goods where goods_name='KD876';
+		可以查询指定列的数据
+			查询ecs_goods表中所有的商品名称
+			select goods_name from ecs_goods;
+		语法:
+			select 列  from  表  where 条件;
+			select后面，from前面是和列相关的，where条件和行相关
+			*代表所有列
+	3>where条件(子句)
+		a.比较
+			>  	大于
+			<	小于
+			=	等于
+			>=  大于等于
+			<=	小于等于
+			!=	不等于
+			<>  不等于
+			查询ecs_goods表中本店售价高于3000的所有商品信息
+			select * from ecs_goods where shop_price>3000;
+			查询ecs_goods表中商品名称不是KD876的所有商品名称
+		b.逻辑、关系
+			and	同时满足
+			or  满足一个条件即可
+			not 不满足条件
+			查询ecs_goods表中商品名称是KD876或者是诺基亚的所有信息
+			select * from ecs_goods where goods_name='KD876' or goods_name='诺基亚';
+			查询ecs_goods表中本店售价高于2000并且低于3000的所有商品名称和本店售价
+			select goods_name,shop_price from ecs_goods where shop_price>2000
+			and shop_price<3000;
+		c.区间
+			between...and...
+			区间是包括了端点，小在前，大在后
+			查询ecs_goods表中本店售价范围2300和4000之间的所有商品信息
+			select * from ecs_goods where shop_price>=2300 and shop_price<=4000;
+			select * from ecs_goods where shop_price between 2300 and 4000;
+			
+
+
+
+
+
+
 
 
 
