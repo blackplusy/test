@@ -150,6 +150,13 @@ j.管理mysql常用的工具
 	补充:授权
 	grant 权限 to 用户@IP identified by 密码;
 	grant all privileges on *.* to root@'%' identified by 'test';
+	grant:						授权命令
+	all privileges:				赋予所有权限
+	on :						在哪个数据库的哪个表
+	*.*:                        前面的*代表数据库，所有数据库，后面的*代表所有的表
+	root: 						用户名
+	%:                          允许访问的IP地址，%代表所有IP都可以
+	identified by 'test'        设置远程登陆的用户的登陆密码是test
 
 k.数据的修改
 	字符类型数据需要加单引号
@@ -176,7 +183,7 @@ l.数据的删除
 	truncate table 表;
 	删除goods表中所有数据
 	truncate table goods;
-	
+
 
 
 
