@@ -158,11 +158,36 @@ select 列 from 表1，表2 where 表1.列=表2.列;
 		where g.cat_id=c.cat_id
 		and c.cat_name='3G手机';
 
+
+
 查询商品名称以诺基亚开头的商品的分类名称
+1.分析列
+	商品名称
+	分类名称
+2.分析表
+	ecs_goods
+	ecs_category
+3.关联
+	select * from ecs_goods e1,ecs_category e2
+	where e1.cat_id=e2.cat_id;
+4.过滤
+	select e2.cat_name from cs_goods e1,ecs_category e2
+	where e1.cat_id=e2.cat_id
+	and e1.goods_name like '诺基亚%';
 查询分类名称以手机结尾的商品名称
+select g.goods_name  from ecs_category c,ecs_goods g
+where c.cat_id=g.cat_id
+and c.cat_name like '%手机';
 查询商品本店售价范围2000和3000之间的商品的分类名称
+select  c.cat_name from ecs_goods g,ecs_category c
+where g.cat_id=c.cat_id
+and g.shop_price between 2000 and 3000;
 
+SELECT  DISTINCT(c.cat_name) FROM ecs_goods g,ecs_category c
+WHERE g.cat_id=c.cat_id
+AND g.shop_price BETWEEN 2000 AND 3000;
 
+补充：去重函数distinct()
 
 
 
