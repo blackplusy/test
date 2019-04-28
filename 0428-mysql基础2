@@ -237,10 +237,59 @@ https://dev.mysql.com/doc/index-other.html
 
 问题:
 	查询以C开头的国家有哪些城市?
+	列：
+		国家名字
+		城市名字
+	表：
+		country
+		city
+	关联：
+		select * from city c,country co
+		where c.country_id=co.country_id;
+	过滤：
+		select c.city from city c,country co
+		where c.country_id=co.country_id
+		and co.country like 'C%';
 
-	查询名字为MARY的所在城市?
+	查询客户表中名字为MARY的所在城市?
+	分析列
+		名字
+		城市
+	分析表
+		customer 
+		city
+		address
+	关联
+		select  * from city c,address a,customer cu
+		where c.city_id=a.city_id
+		and a.address_id=cu.address_id;
+	过滤
+		select  c.city from city c,address a,customer cu
+		where c.city_id=a.city_id
+		and a.address_id=cu.address_id
+		and cu.first_name='MARY';
 
-	查询名字为MARY的所在国家?
+	查询客户名字为MARY的所在国家?
+	分析列
+		国家名称
+		客户名字
+	分析表
+		city
+		country
+		address
+		customer
+	关联
+		select * from country co,city c,address a,customer cu
+		where c.city_id=a.city_id
+		and a.address_id=cu.address_id
+		and c.country_id=co.country_id;
+	过滤
+		select co.country from country co,city c,address a,customer cu
+		where c.city_id=a.city_id
+		and a.address_id=cu.address_id
+		and c.country_id=co.country_id
+		and cu.first_name='MARY';
+		
 
 
 
