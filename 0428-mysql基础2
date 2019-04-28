@@ -289,9 +289,49 @@ https://dev.mysql.com/doc/index-other.html
 		and a.address_id=cu.address_id
 		and c.country_id=co.country_id
 		and cu.first_name='MARY';
-		
+
+子查询
+	一条SQL语句的执行结果依赖于另外一条SQL语句的执行结果
+	查询商品名称是KD876的分类名称
+	分析列
+		商品名称
+		分类名称
+	分析表
+		ecs_goods
+		ecs_category
+	分析关联列
+		cat_id
+	1.查询商品表中满足条件的cat_id
+		select cat_id from ecs_goods where goods_name='KD876';--4
+
+	2.查询分类表中cat_id为上面查询出来结果的分类名称
+		select cat_name from ecs_category where cat_id=(select cat_id from ecs_goods where goods_name='KD876');
+	注意：子查询可以应用在数据的新增，修改和删除中
+	--2.jpg
+	3.insert into achievement values((select id from student where name='Robert'),80);
+	4.update achievement set mark=87 where id=(select id from student where name='Rose');
+	5.
+	delete from achievement where id=(select id from student where name='Betty');
+	delete from student where name='Betty';
+	注意：子查询分为单行子查询和多行子查询
+	单行子查询，查询子句返回的结果是1行，可以使用=或者in
+	多行子查询,查询子句返回的结果是多行，只能用in
+
+	查询以诺基亚开头的商品的分类名称有哪些？
+	1.查询商品表中满足条件的cat_id
+	select cat_id from ecs_goods where goods_name like '诺基亚%';
+
+	2.查询分类表中cat_id为上面查询出来结果的分类名称
+	select cat_name from ecs_category where cat_id in (select cat_id from ecs_goods where goods_name like '诺基亚%');
+
+	通过子查询完成以下练习：
+	查询以C开头的国家有哪些城市?
 
 
+	查询客户表中名字为MARY的所在城市?
+
+
+	查询客户名字为MARY的所在国家?
 
 
 
