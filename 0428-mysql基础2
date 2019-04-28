@@ -189,10 +189,51 @@ AND g.shop_price BETWEEN 2000 AND 3000;
 
 补充：去重函数distinct()
 
+--1.jpg
+1.select * from test1 where department='计算机系' and place='北京';
+2.update test1 set department='信息学院' where department='计算机系';
+3.select  t1.no,t1.name.t2.grade,t2.courses from test1 t1,test2 t2
+where t1.no=t2.no and t2.grade>=75;
 
+--2.jpg
+1.select  s.name from student s,achievement a
+where s.id=a.id and a.mark>85;
+2.select count(*) from achievement where mark>=90;
+3.insert into achievement values(7,80);
+4.update achievement set mark=87 where id=3;
+5.delete from student where name='Betty';
+  delete from achievement where id=6;
 
-
-
+--4.jpg
+1.select s#,grade from sc where c#='C2';
+2.select sname from s where sname like 'D%';
+3.
+分析列：
+	cname
+	s#
+	sname
+分析表：
+	cname 		c
+	s# sname    s
+	            sc
+	select s.s#,s.sname from s,sc,c
+	where s.s#=sc.s# and sc.c#=c.c#
+	and c.cname='Maths';
+4.select   s# from sc where c# in ('C2','C4');
+================================================
+导入sakila数据库
+https://dev.mysql.com/doc/index-other.html
+1.把下载后的sakila数据库压缩包传入linux中
+2.解压sakila压缩包文件
+	tar -xzvf sakila-db.tar.gz
+3.进入到已经解压到的目录中
+	cd sakila-db
+4.登陆mysql数据库
+	mysql -u root -p
+5.导入sakila-schema.sql
+	source sakila-schema.sql;
+6.导入sakila-data.sql
+	source sakila-data.sql;
 
 
 
