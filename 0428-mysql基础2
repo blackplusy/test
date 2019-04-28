@@ -113,6 +113,56 @@ where 条件
 		avg()     平均值
 		SELECT goods_name,LOWER(goods_name) FROM ecs_goods;
 		SELECT AVG(shop_price),ROUND(AVG(shop_price),2) FROM ecs_goods;
+=================================================
+多表查询
+当一张表无法满足条件时候，使用多表查询
+1.笛卡尔积
+两张表不做任何关联产生的数据，造成无效数据增多，数据量成倍增加，可以通过内联查询、左联查询、右联查询来避免产生笛卡尔积
+select * from ecs_goods;--33
+select * from ecs_category;--14
+select * from ecs_goods,ecs_category;--462
+2.内联查询(连接查询)
+语法:
+select 列 from 表1 inner join 表2 on 表1.列=表2.列;
+select 列 from 表1，表2 where 表1.列=表2.列;
+关联列：
+	a.名字相同
+	b.作用相同
+	c.主外键关系
+查询商品名称是KD876的分类名称
+	1.分析列
+		商品名称
+		分类名称
+	2.分析表
+		商品名称   ecs_goods
+		分类名称   ecs_category
+	3.关联
+		select * from ecs_goods,ecs_category
+		where ecs_goods.cat_id=ecs_category.cat_id;
+	4.过滤
+		select cat_name from ecs_goods,ecs_category
+		where ecs_goods.cat_id=ecs_category.cat_id
+		and goods_name='KD876';
+查询商品分类名称是3G手机的商品名称？
+	1.分析列
+		分类名称
+		商品名称
+	2.分析表
+		商品名称  ecs_goods
+		分类名称  ecs_category
+	3.关联
+		select * from ecs_goods g,ecs_category c
+		where g.cat_id=c.cat_id;
+	4.过滤
+		select g.goods_name   from ecs_goods g,ecs_category c
+		where g.cat_id=c.cat_id
+		and c.cat_name='3G手机';
+
+
+
+
+
+
 
 
 
