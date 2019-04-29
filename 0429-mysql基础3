@@ -1,0 +1,59 @@
+--3.png
+select * from dt_pay where salary>(select avg(salary) from dt_pay);
+select * from dt_pay;
+truncate table dt_pay;
+注意：
+delete删除数据后自增序列会继续生效
+truncate删除数据后自增序列会初始化
+
+--5.bmp
+select avg(english) from mark;
+select m.math,c.name,c.address,c.telno  from cust c,mark m
+where c.studentno=m.studentno
+and c.studentno in (11,22,33,44,55);
+
+--7.jpg
+a.
+查询c表中满足条件的c#
+select c# from c where cn='税收基础';
+查询sc表中满足c#为上面查询出来结果的s#
+select s# from sc where c# in (select c# from c where cn='税收基础');
+查询s表中满足s#为上面查询出来结果的学号和姓名
+select s#,sn from s where s# in (select s# from sc where c# in (select c# from c where cn='税收基础'));
+b.
+select s# from sc where c#='C2';
+select sn,sd from s where s# in (select s# from sc where c#='C2');
+c.
+select sn,sd from s where s# in (select s# from sc where c#!='C5');
+==================================================================
+分组查询
+按照某种条件进行分类
+1.分组函数
+	max()   最大
+	min() 	最小
+	avg()	平均
+	sum()   求和
+	count() 计数
+分组函数通常是和分组一起使用，也可以单独使用
+查询ecs_goods表中最高最低平均本店售价是多少
+select max(shop_price),min(shop_price),avg(shop_price) from ecs_goods;
+查询本店售价高于平均本店售价的商品名称
+select avg(shop_price) from ecs_goods;
+select goods_name from ecs_goods where shop_price>(select avg(shop_price) from ecs_goods);
+2.分组查询
+语法：select 列 from 表 where 条件
+		group by 分组条件
+			having 分组后过滤条件;
+
+分组条件:每后面跟的就是分组条件,一定不能出现一对多的情况
+查询ecs_goods表中每种分类ID对应多少种商品
+select cat_id,count(*) from ecs_goods group by cat_id;
+查询每种分类对应多少种商品，要求显示分类名称，商品数量
+select  c.cat_name,count(*)  from  ecs_goods g,ecs_category c
+where g.cat_id=c.cat_id
+group by c.cat_name;
+
+
+
+
+
