@@ -112,5 +112,49 @@ select * from ecs_goods limit 5;
 查询ecs_goods表中6-15行数据
 select * from ecs_goods limit 5,10;
 
+--2.png
+1.select count(*) from table1;
+2.select t2.家庭住址    from table1 t1,table2 t2
+where t1.学生id=t2.学生id
+and t1.姓名 like '张%'
+and t1.性别='女'
+order by t1.姓名;
 
+--4.png
+1.select xm,zkzh from tb_student where score>0 and score<5;
+2.select * from tb_student where xm='张三' and score=5;
+3.
+select c.成绩表 from 学生表 s,成绩表 c
+where s.准考证号=c.准考证号
+and s.年龄 between 20 and 35
+order by s.准考证号 desc;
 
+--6.jpg
+1.
+create table user(
+	userid int(11) primary key,
+	username varchar(20) not null,
+	password varchar(20) not null,
+	crtime   date   not null
+);
+2.
+insert into user values(1002,'username','password','2015-01-01');
+
+--8.jpg
+1.create table store_infomation(
+	name char(20),
+	sales int,
+	Date  date
+);
+2.alter table store_infomation add Memo char(20) 
+3.update store_infomation set store_name =replace(store_name,'店','分店');
+alter table store_infomation rename column name to store_name;
+alter table store_infomation change name store_name char(20);
+4.
+select store_name,avg(sales)   from store_infomation 
+group by store_name,date;
+5.
+
+select  store_name,sum(sales)  from store_infomation
+group by store_name
+having sum(sales)>1000000;
