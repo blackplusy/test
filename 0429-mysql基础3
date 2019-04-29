@@ -53,14 +53,64 @@ select  c.cat_name,count(*)  from  ecs_goods g,ecs_category c
 where g.cat_id=c.cat_id
 group by c.cat_name;
 
-
-查询city表中每个国家id对应多少个城市,要求显示城市数量,国家id?
-
-查询每个国家有多少个城市,要求显示国家名称,城市数量?
-
-查询每个城市有多少个客户,要求显示城市名称,客户数量(计算*就可以)
+having
+having和where区别
+having 分组后过滤，后面可以直接跟分组函数
+where 分组前过滤，后面不能直接跟分组函数
 
 查询C开头的国家,每个国家有多少个城市
+select  co.country,count(c.city) from country co,city c where c.country_id=co.country_id
+group by co.country
+having co.country like 'C%';
+
+查询城市数量超过50的国家名称
+SELECT  co.country,COUNT(c.city) FROM country co,city c WHERE c.country_id=co.country_id
+GROUP BY co.country
+HAVING COUNT(c.city)>50;
+
+
+查询city表中每个国家id对应多少个城市,要求显示城市数量,国家id?
+select country_id,count(city) from city group by country_id;
+
+查询每个国家有多少个城市,要求显示国家名称,城市数量?
+select  co.country,count(c.city) from country co,city c where c.country_id=co.country_id
+group by co.country;
+
+查询每个城市有多少个客户,要求显示城市名称,客户数量(计算*就可以)
+select  c.city,count(*)  from  city c,address a,customer cu
+where c.city_id=a.city_id
+and  a.address_id=cu.address_id
+group by c.city;
+
+
+查询C开头的国家,每个国家有多少个城市
+select  co.country,count(c.city) from country co,city c where c.country_id=co.country_id
+and co.country like 'C%'
+group by co.country;
+
+
+排序和分页
+a.排序
+按照某种顺序进行排列
+select 列 from 表 where 条件 group by 分组条件 having 分组后过滤条件 order by 排序条件;
+顺序:从小到大
+	order by 列 
+	order by 列 asc
+逆序:从大到小
+	order by 列 desc
+
+查询ecs_goods表中所有数据按照本店售价顺序排列
+select * from ecs_goods order by shop_price;
+查询ecs_goods表中所有数据，按照分类id倒序排列
+select * from ecs_goods order by cat_id desc;
+
+b.分页
+总语法：
+select 列 from 表 where 条件 group by 分组条件 having 分组后过滤条件 order by 排序条件 limit 限制条件
+查询ecs_goods表中前5行数据
+select * from ecs_goods limit 5;
+查询ecs_goods表中6-15行数据
+select * from ecs_goods limit 5,10;
 
 
 
